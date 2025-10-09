@@ -4,6 +4,7 @@ import fetch from "node-fetch";
 import admin from "firebase-admin";
 import fs from "fs";
 import cors from "cors";
+import path from "path";
 
 // Firebase setup
 const serviceAccount = JSON.parse(fs.readFileSync("serviceAccountKey.json"));
@@ -14,17 +15,21 @@ const db = admin.firestore();
 
 const app = express();
 
-// Enable CORS for all origins (including 127.0.0.1) and handle preflight OPTIONS
+// Enable CORS for all origins
 app.use(cors());
 app.options(/.*/, cors());
 app.use(bodyParser.json());
 
-// Root GET route
+// Serve static front-end files from 'public' folder
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "public")));
+
+// Root GET route serves index.html
 app.get("/", (req, res) => {
-  res.send("Server is running ✅");
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// /send-sms endpoint
+// Your existing /send-sms endpoint
 app.post("/send-sms", async (req, res) => {
   try {
     const { attendance, date, time } = req.body;
@@ -37,31 +42,25 @@ app.post("/send-sms", async (req, res) => {
     for (let learner of attendance) {
       if (learner.phone && learner.remarks !== "present") {
         try {
-          // Ensure phone number is digits only, then prepend country code if needed
-          let phoneNumber = learner.phone.replace(/\D/g, ""); // remove non-digits
+          let phoneNumber = learner.phone.replace(/\D/g, "");
           if (phoneNumber.length === 10) {
             phoneNumber = "63" + phoneNumber;
           }
 
-          // Build payload for single SMS API
           const payload = new URLSearchParams();
-          payload.append("token", "ff93b1c36d66bf7cd0ec2b9ab8145ff2"); // your token
-          payload.append("sendto", "+" + phoneNumber); // API expects +XXXXXXXXXXX
+          payload.append("token", "ff93b1c36d66bf7cd0ec2b9ab8145ff2");
+          payload.append("sendto", "+" + phoneNumber);
           payload.append(
             "body",
             `Magandang araw po! Nais po naming ipaalam na ang iyong anak na si ${learner.name} ay ${learner.remarks} sa klase bandang ${time} ng ${date}.`
           );
-          payload.append("device_id", "12476"); // must match your app device ID
+          payload.append("device_id", "12476");
           payload.append(
             "timetosend",
             new Date().toISOString().slice(0, 19).replace("T", " ")
           );
           payload.append("sim", "1");
 
-          // Debug log
-          console.log("📤 Sending SMS form-data:", payload.toString());
-
-          // Send to single-SMS endpoint
           const smsResponse = await fetch("https://smsgateway24.com/getdata/addsms", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -69,16 +68,9 @@ app.post("/send-sms", async (req, res) => {
           });
 
           const smsResult = await smsResponse.json();
-          console.log(`📩 SMS result for ${phoneNumber}:`, smsResult);
-
-          if (smsResult.error === 0) {
-            console.log(`✅ SMS queued successfully for ${phoneNumber}`);
-            success++;
-          } else {
-            console.error(`❌ SMS API error for ${phoneNumber}:`, smsResult.message);
-          }
+          if (smsResult.error === 0) success++;
         } catch (err) {
-          console.error(`❌ SMS failed for ${learner.phone}:`, err.message);
+          console.error(`SMS failed for ${learner.phone}:`, err.message);
         }
       }
     }
@@ -90,7 +82,6 @@ app.post("/send-sms", async (req, res) => {
   }
 });
 
-// Start server
-app.listen(3000, () =>
-  console.log("🚀 Server running on http://localhost:3000")
-);
+// Use Render-assigned PORT or 3000 locally
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
