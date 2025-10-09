@@ -1,0 +1,51 @@
+<!-- summary.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Attendance Summary</title>
+  <link rel="stylesheet" href="styles.css" />
+    <!-- Add Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+    <script>
+  // Your Firebase config object from your Firebase project settings
+  const firebaseConfig = {
+    apiKey: "AIzaSyBvtPqW95v4ZzpkGZiQFczg55jlGN-ZGNQ",
+    authDomain: "student-tracker-9c478.firebaseapp.com",
+    projectId: "student-tracker-9c478",
+    storageBucket: "student-tracker-9c478.firebasestorage.app",
+    messagingSenderId: "138881222420",
+    appId: "1:138881222420:web:6726b17d19661761c5e401",
+    measurementId: "G-SPE6T1XYMJ"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Initialize services
+  const db = firebase.firestore();
+  const auth = firebase.auth();
+</script>
+</head>
+
+<body>
+  <h2>Attendance Summary</h2>
+  <table id="summaryTable">
+    <thead>
+      <tr id="dateRow"></tr> <!-- merged dates -->
+      <tr id="hourRow"></tr> <!-- hours -->
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+  <script src="firebase-init.js"></script>
+  <script src="summary.js"></script>
+</body>
+</html>

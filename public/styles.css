@@ -1,0 +1,193 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Theme variables */
+:root {
+  --bg: #f5fdf7;
+  --card: #ffffff;
+  --muted: #64748b;
+  --accent: #16a34a; /* green */
+  --shadow: 0 6px 18px rgba(22,163,74,0.15);
+  --radius: 12px;
+  --gap: 16px;
+  --max-width: 900px;
+}
+
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Global */
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: #0f172a;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  background-color: #164916;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 0 15px #0D6B0D;
+  color: #E0F2E9;
+}
+
+/* Headings */
+h1, h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #062f06;
+}
+
+/* Forms */
+label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="month"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #245824;
+  color: #D0F0C0;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  background-color: #f5f9f5;
+  color: #0f172a;
+}
+
+textarea { resize: vertical; }
+
+/* Buttons */
+button, .btn {
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 6px 14px rgba(22,163,74,0.2);
+  transition: background-color 0.3s;
+}
+
+button:hover, .btn:hover {
+  background-color: #15803d;
+}
+
+.btn.secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(22,163,74,0.4);
+  box-shadow: none;
+}
+.btn.secondary:hover {
+  background: rgba(22,163,74,0.06);
+}
+
+/* Button row */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Tables */
+table, .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  border: 1px solid #046240;
+  padding: 10px;
+  text-align: center;
+  color: #E0F2E9;
+}
+
+th {
+  background-color: #072d20;
+}
+
+/* Login forms */
+.login-container .form-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.login-container form {
+  background-color: #164916;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 0 10px #0D6B0D;
+  width: 300px;
+}
+/* Centering container for the scanner */
+.page-center {
+  min-height: 100vh;            /* full screen height */
+  display: flex;
+  align-items: center;          /* vertical center */
+  justify-content: center;      /* horizontal center */
+  background: var(--bg);        /* keep your background */
+}
+
+/* The card that holds the scanner */
+.scanner-card {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  display: flex;                /* changed from grid → flex for easier centering */
+  flex-direction: column;
+  gap: var(--gap);
+  align-items: center;
+  justify-content: center;
+}
+
+/* Reader wrap */
+.reader-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;  /* ✅ horizontal center */
+  align-items: center;      /* ✅ vertical center inside card */
+}
+
+/* Reader itself */
+#reader {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(22,163,74,0.25);
+}

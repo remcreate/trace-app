@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Attendance (Admin)</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- QR Code Scanner Library -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+  <!-- Firebase (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <script>
+    // ✅ Firebase config (same as enrol page)
+    const firebaseConfig = {
+      apiKey: "AIzaSyBvtPqW95v4ZzpkGZiQFczg55jlGN-ZGNQ",
+      authDomain: "student-tracker-9c478.firebaseapp.com",
+      projectId: "student-tracker-9c478",
+      storageBucket: "student-tracker-9c478.firebasestorage.app",
+      messagingSenderId: "138881222420",
+      appId: "1:138881222420:web:6726b17d19661761c5e401",
+      measurementId: "G-SPE6T1XYMJ"
+    };
+
+    // ✅ Initialize Firebase and Firestore
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    window.db = db; // make Firestore global for qr.js
+  </script>
+</head>
+<body>
+  <h2>Admin QR Code Scanner</h2>
+  <h4>Please scan your QR here!</h4>
+
+  <!-- Scanner box -->
+  <div id="reader" style="width:300px; margin-bottom:20px;"></div>
+
+  <!-- Result text -->
+  <p id="result" style="font-weight: bold; color: green;"></p>
+
+  <!-- JS logic -->
+  <script src="qr.js"></script>
+</body>
+</html>

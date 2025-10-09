@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enroll Learners</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Add Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+  <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBvtPqW95v4ZzpkGZiQFczg55jlGN-ZGNQ",
+    authDomain: "student-tracker-9c478.firebaseapp.com",
+    projectId: "student-tracker-9c478",
+    storageBucket: "student-tracker-9c478.firebasestorage.app",
+    messagingSenderId: "138881222420",
+    appId: "1:138881222420:web:6726b17d19661761c5e401",
+    measurementId: "G-SPE6T1XYMJ"
+  };
+
+  // Initialize Firebase (compat)
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+  window.db = db; // Make Firestore global
+</script>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Enroll Learners</h1>
+    <textarea id="bulkLearners" placeholder="Paste learners data, one per line: Last Name, First Name Middle Name, Sex (Male/Female), Parent's Phone Number" rows="10"></textarea>
+    <div class="button-row">
+      <button id="saveBtn" class="saveBtn">Save Learners</button>
+      <button id="goMarkAttendanceBtn" class="btn">Mark Attendance</button>
+    </div>
+
+    <table id="learnersTable" class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Sex</th>
+          <th>Parent Phone</th>
+          <th>QR Code</th>
+          <th>Actions</th> <!-- for Edit + Delete buttons -->
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+   
+  </div>
+  <div>
+    <div class="button-row">
+      <button id="bulkDownloadBtn" class="btn">Download All QR Codes</button>
+    </div></div>
+
+
+  <script src="enrol_learners.js"></script>
+</body>
+</html>

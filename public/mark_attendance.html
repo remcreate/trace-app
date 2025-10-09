@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mark Attendance</title>
+  <link rel="stylesheet" href="styles.css" />
+    <!-- Add Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+<script>
+  // Your Firebase config object from your Firebase project settings
+  const firebaseConfig = {
+    apiKey: "AIzaSyBvtPqW95v4ZzpkGZiQFczg55jlGN-ZGNQ",
+    authDomain: "student-tracker-9c478.firebaseapp.com",
+    projectId: "student-tracker-9c478",
+    storageBucket: "student-tracker-9c478.firebasestorage.app",
+    messagingSenderId: "138881222420",
+    appId: "1:138881222420:web:6726b17d19661761c5e401",
+    measurementId: "G-SPE6T1XYMJ"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Initialize services
+  const db = firebase.firestore();
+  const auth = firebase.auth();
+</script>
+</head>
+<body>
+  <div class="container">
+    <h1>Mark Attendance</h1>
+
+    <div>
+      <label>Teacher Name: <input type="text" id="teacherNameInput" placeholder="Enter teacher's name" /></label><br />
+
+
+
+      <label>Subject: <input type="text" id="subjectInput" placeholder="Enter subject" /></label><br />
+      <label>Date: <input type="date" id="dateInput" /></label><br />
+      <label>Time: <input type="time" id="timeInput" /></label>
+    </div>
+    <label><input type="checkbox" id="markAllPresent" /> Mark All Present</label><br />
+    <table id="attendanceTable">
+      <thead>
+        <tr>
+          <th>Learner Name</th>
+          <th>Phone</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- learners will be loaded here -->
+      </tbody>
+    </table>
+
+    <button id="saveAttendanceBtn">Save Attendance</button>
+    <button id="sendStatusBtn">Send Status</button>
+    <button id="SeeSummaryBtn">See Summary</button>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script src="mark_attendance.js"></script>
+</body>
+</html>
