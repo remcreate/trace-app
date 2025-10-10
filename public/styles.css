@@ -33,12 +33,25 @@ html, body {
   line-height: 1.5;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
+.hero-image {
+  width: 90%;          /* default: 90% of container on mobile */
+  max-width: 500px;    /* max size on large screens */
+  height: auto;        /* keeps aspect ratio */
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease; /* optional for smooth hover/resize effects */
+}
+
+/* Optional: make it slightly bigger on laptop/desktops */
+@media (min-width: 900px) {
+  .hero-image {
+    max-width: 700px;  /* grows on bigger screens */
+  }
+}
+
+/* Optional: hover zoom effect */
+.hero-image:hover {
+  transform: scale(1.05); /* small zoom effect */
 }
 
 /* 🌿 Containers */
@@ -52,7 +65,84 @@ body {
   width: 90%;
   margin: 1rem auto;
 }
+.hidden {
+  display: none;
+}
 
+/* Landing Page */
+.landing {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.landing h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 1000;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  line-height: 1.2;
+  color: #0d381d;
+  line-height: 1.2;    /* tighter line spacing for the title */
+  margin-bottom: 2px;  /* space between title and subtitle */
+}
+.form-container h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 1000;
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  line-height: 1.2;
+  color: #0d381d;
+  line-height: 1.2;    /* tighter line spacing for the title */
+  margin-bottom: 2px;  /* space between title and subtitle */
+}
+
+
+.landing p {
+  font-size: clamp(1.1rem, 6vw, 1 rem);
+  color: #4a5568;
+  line-height: 1.4;    /* adjust subtitle spacing */
+  margin-bottom: 20px; /* space below subtitle before buttons */
+}
+.form-container p {
+  text-align: center; 
+  font-size: 1 rem;
+  color: #4a5568;
+  line-height: 1.4;    /* adjust subtitle spacing */
+  margin-bottom: 20px; /* space below subtitle before buttons */
+}
+
+.landingLogInBtn {
+  width: 70%;         /* 80% of the container on mobile */
+  max-width: 250px;   /* never wider than 250px on large screens */
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 0px;
+  cursor: pointer;
+  background-color: #209e5b;
+  color: white;
+  transition: 0.3s;
+}
+
+.landingSignUpBtn {
+  width: 70%;         /* 80% of the container on mobile */
+  max-width: 250px;   /* never wider than 250px on large screens */
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 0px;
+  cursor: pointer;
+  background-color: #01160b;
+  color: white;
+  transition: 0.3s;
+  margin-top: 1px;
+}
+.landing button:hover {
+  background-color: #0a7b3d;
+}
+.landing p{
+  text-align: center; 
+  font-size: 1 rem;
+  color: #4a5568;
+  line-height: 1.4;    /* adjust subtitle spacing */
+  margin-bottom: 2px; /* space below subtitle before buttons */
+}
 /* 🌿 Headings */
 h1, h2 {
   text-align: center;
@@ -60,6 +150,28 @@ h1, h2 {
   color: var(--accent-dark);
 }
 
+h4 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--accent-dark);
+}
+.back-arrow {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #e2e8f0;
+  color: #0a4b1b;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.back-arrow:hover {
+  background-color: #cbd5e0;
+}
 /* 🌿 Inputs */
 input[type="text"],
 input[type="date"],
@@ -181,17 +293,35 @@ th {
 }
 
 .scanner-card {
-  width: 100%;
-  max-width: 420px;
+  width: 90%;                /* takes most of the screen on mobile */
+  max-width: 480px;          /* limits size on larger screens */
+  min-width: 280px;          /* prevents it from being too small */
   background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 20px;
+  padding: clamp(16px, 2vw, 24px); /* dynamic padding based on screen */
   display: flex;
   flex-direction: column;
   gap: var(--gap);
   align-items: center;
+  transition: all 0.3s ease; /* smooth resizing on window change */
 }
+
+/* Optional: slightly larger card on tablets/desktops */
+@media (min-width: 768px) {
+  .scanner-card {
+    max-width: 600px;
+    padding: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .scanner-card {
+    max-width: 700px;
+    padding: 28px;
+  }
+}
+
 
 .reader-wrap {
   width: 100%;
@@ -269,9 +399,27 @@ th {
   }
 
   button, .btn {
-    width: 100%;
-    max-width: 100%;
-  }
+  display: inline-block;                 /* keeps buttons inline for multiple buttons */
+  width: 80%;                            /* 80% of container on small screens */
+  max-width: 200px;                      /* prevent very wide buttons on desktop */
+  min-width: 120px;                      /* prevent too small on mobile */
+  padding: 12px 24px;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem); /* font scales with screen */
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: var(--accent);
+  color: var(--text-light);
+  box-shadow: var(--shadow);
+  margin: 10px auto;                     /* center button in container */
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover, .btn:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);           /* subtle hover effect */
+}
+
 
   .app-title {
     font-size: 1.6em;
@@ -286,53 +434,79 @@ body {
   background-color: white;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  padding-top: 350px; /* 👈 adjust depending on your header height */
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  color: var(--text-dark);
+  overflow-x: hidden; /* prevent horizontal scroll */
 }
 
 
-/* Keep the header visible and fixed at top */
-header {
-  background-color: #004aad; /* or your preferred color */
-  color: white;
-  padding: 10px 0;
+/* 🌿 App Header */
+/* 🌿 App Header (non-sticky) */
+.app-header {
+  position: relative; /* no longer fixed */
+  width: 100%;
   text-align: center;
-  font-size: 1.2em;
-  position: sticky; /* stays at top while scrolling */
-  top: 0;
-  z-index: 10;
+  background: linear-gradient(135deg, #16a34a, #0f7b32);
+  color: white;
+  padding: 25px 10px;
+  border-bottom: 4px solid #0d5d2b;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1;
 }
 
-/* Center QR content while leaving space for header */
-.qr-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 60px); /* subtract header height */
-  padding: 20px;
-  box-sizing: border-box;
+.app-title {
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin: 0;
+  color: #ffffff; /* ensure TRACE is white */
 }
 
-/* QR code image */
+.app-subtitle {
+  font-size: 1em;
+  font-style: italic;
+  margin-top: 6px;
+  color: #bbf7d0; /* soft mint accent */
+}
+
+/* 🌿 Adjust containers now that header isn't fixed */
+.container {
+  max-width: var(--max-width);
+  background-color: var(--card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text-dark);
+  width: 90%;
+  margin: 2rem auto; /* simpler spacing now */
+}
+
+
 .qr-container img {
   max-width: 90%;
   height: auto;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(22, 163, 74, 0.15);
 }
 
-/* Adjust layout for mobile screens */
+/* 🌿 Responsive Adjustments */
 @media (max-width: 600px) {
-  header {
-  background-color: white;
-  color: #004aad; /* dark blue text for contrast */
-  padding: 10px 0;
-  text-align: center;
-  font-size: 1.4em;
-  font-weight: bold;
-  border-bottom: 2px solid #004aad; /* optional accent line */
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  .app-header {
+    padding: 18px 8px;
+  }
+
+  .app-title {
+    font-size: 1.8em;
+  }
+
+  .qr-container {
+    padding: 16px;
+    min-height: calc(100vh - 100px);
+  }
+
+  #reader {
+    max-width: 280px;
+  }
 }

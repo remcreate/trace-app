@@ -1,5 +1,35 @@
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
+const landingPage = document.getElementById('landingPage');
+const authContainer = document.getElementById('authContainer');
+const showLoginBtn = document.getElementById('showLoginBtn');
+const showSignupBtn = document.getElementById('showSignupBtn');
+const backToLandingFromLogin = document.getElementById('backToLandingFromLogin');
+const backToLandingFromSignup = document.getElementById('backToLandingFromSignup');
+
+// Show Login
+    showLoginBtn.addEventListener('click', () => {
+      landingPage.classList.add('hidden');
+      authContainer.classList.remove('hidden');
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+    });
+
+ // Show Signup
+    showSignupBtn.addEventListener('click', () => {
+      landingPage.classList.add('hidden');
+      authContainer.classList.remove('hidden');
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+    });
+ // Back to Landing
+    [backToLandingFromLogin, backToLandingFromSignup].forEach(backBtn => {
+      backBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        authContainer.classList.add('hidden');
+        landingPage.classList.remove('hidden');
+      });
+    });
 
 loginForm.addEventListener('submit', async e => {
   e.preventDefault();

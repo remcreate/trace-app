@@ -34,23 +34,28 @@
 </head>
 <body>
 
-  <header class="app-header">
-    <h1 class="app-title">TRACE</h1>
-    <p class="app-subtitle">Tracking Attendance and Communicating Efficiently</p>
-  </header>
+  <div id="landingPage" class="landing">
+    <h1>Welcome to TRACE</h1>
+    <p>Tracking Attendance and Communicating Efficiently</p>
+    <button id="showLoginBtn">Login</button>
+    <button id="showSignupBtn">Sign Up</button>
+  </div>
 
-  <div class="container login-container">
+  <div class="container login-container hidden" id="authContainer">
+    <div class="form-container">
     
     <div class="form-container">
-      <form id="loginForm">
+      <form id="loginForm" class="hidden">
         <h2>Login</h2>
         <input type="email" id="loginEmail" placeholder="Email" required />
         <input type="password" id="loginPassword" placeholder="Password" required />
         <button type="submit" class="btn">Login</button>
+        <p><a href="#" id="backToLandingFromLogin" class="back-arrow">← Back</a></p>
       </form>
 
-<form id="signupForm">
+<form id="signupForm" class="hidden">
   <h2>Signup</h2>
+  <h4>Don't have an account? Register below!</h4>
   <input type="email" id="signupEmail" placeholder="Email" required />
   <input type="password" id="signupPassword" placeholder="Password" required />
   <input type="text" id="signupName" placeholder="Teacher/Admin Name" required />
@@ -64,6 +69,7 @@
   </select>
   
   <button type="submit" class="btn">Sign Up</button>
+  <p><a href="#" id="backToLandingFromLogin" class="back-arrow">← Back</a></p>
 </form>
 
 
