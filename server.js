@@ -7,10 +7,13 @@ import cors from "cors";
 import path from "path";
 
 // Firebase setup
-const serviceAccount = JSON.parse(fs.readFileSync("serviceAccountKey.json"));
+// Load service account key from environment variable
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
+
 const db = admin.firestore();
 
 const app = express();
