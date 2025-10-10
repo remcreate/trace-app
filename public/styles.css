@@ -2,7 +2,7 @@
 
 /* 🌿 Theme Variables */
 :root {
-  --bg: #ffffff; /* white background */
+  --bg: #c2bdbd; /* white background */
   --card: #ffffff;
   --muted: #475569;
   --accent: #16a34a;
@@ -402,7 +402,7 @@ th {
   display: inline-block;                 /* keeps buttons inline for multiple buttons */
   width: 80%;                            /* 80% of container on small screens */
   max-width: 200px;                      /* prevent very wide buttons on desktop */
-  min-width: 120px;                      /* prevent too small on mobile */
+  min-width: 10px;                      /* prevent too small on mobile */
   padding: 12px 24px;
   font-size: clamp(0.9rem, 1.5vw, 1.2rem); /* font scales with screen */
   border-radius: 8px;

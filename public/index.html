@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Attendance Tracker - Login/Signup</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <!-- Add Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
@@ -35,10 +36,16 @@
 <body>
 
   <div id="landingPage" class="landing">
-    <h1>Welcome to TRACE</h1>
-    <p>Tracking Attendance and Communicating Efficiently</p>
-    <button id="showLoginBtn">Login</button>
-    <button id="showSignupBtn">Sign Up</button>
+    
+    <h1>TRACE</h1>
+    <p>Track Attendance and Communicate Efficiently</p>
+
+    <img src="images/hero.jpg" alt="Teacher tracking attendance" class="hero-image"><br>
+    <p>Welcome to the tracking system designed to fit the context of DepEd Secondary Education</p>
+    <button id="showLoginBtn" class="landingLogInBtn">Login</button><br><br>
+
+    <p>Don't have an account?</p>
+    <button id="showSignupBtn" class="landingSignUpBtn">Sign Up</button>
   </div>
 
   <div class="container login-container hidden" id="authContainer">
@@ -46,6 +53,8 @@
     
     <div class="form-container">
       <form id="loginForm" class="hidden">
+        <h1>TRACE</h1>
+        <p>Track Attendance and Communicate Efficiently</p>
         <h2>Login</h2>
         <input type="email" id="loginEmail" placeholder="Email" required />
         <input type="password" id="loginPassword" placeholder="Password" required />
@@ -53,8 +62,12 @@
         <p><a href="#" id="backToLandingFromLogin" class="back-arrow">← Back</a></p>
       </form>
 
+
+
 <form id="signupForm" class="hidden">
-  <h2>Signup</h2>
+  <h1>TRACE</h1>
+    <p>Track Attendance and Communicate Efficiently</p>
+    <h2>Signup</h2>
   <h4>Don't have an account? Register below!</h4>
   <input type="email" id="signupEmail" placeholder="Email" required />
   <input type="password" id="signupPassword" placeholder="Password" required />
@@ -69,7 +82,7 @@
   </select>
   
   <button type="submit" class="btn">Sign Up</button>
-  <p><a href="#" id="backToLandingFromLogin" class="back-arrow">← Back</a></p>
+  <p><a href="#" id="backToLandingFromSignup" class="back-arrow">← Back</a></p>
 </form>
 
 
