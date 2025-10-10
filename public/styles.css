@@ -323,16 +323,20 @@ th {
 }
 
 
+/* Center the QR reader */
 .reader-wrap {
+  display: flex;               /* use flexbox */
+  justify-content: center;     /* center horizontally */
+  align-items: center;         /* center vertically if needed */
   width: 100%;
-  display: flex;
-  justify-content: center;
+  margin: 0 auto;
 }
 
+/* Optional: make the QR reader responsive */
 #reader {
-  width: 100%;
-  max-width: 360px;
-  aspect-ratio: 1 / 1;
+  width: 90%;                  /* takes most of the container */
+  max-width: 360px;            /* limits size on desktop */
+  aspect-ratio: 1 / 1;         /* keeps it square */
   border-radius: 12px;
   overflow: hidden;
   background: #000;
@@ -340,7 +344,9 @@ th {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow);
+  margin: 0 auto;              /* ensures centering if needed */
 }
+
 
 /* 🌿 Summary Table */
 #summaryTable {
