@@ -525,3 +525,135 @@ body {
   color: var(--accent-dark);
   width: 100%;
 }
+.instructions{
+  max-width: 720px;
+  margin: 0.8rem auto;
+  padding: 1rem 1.2rem;
+  background: #fbfbfd;
+  border-left: 5px solid #0b483c; /* accent */
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(9, 73, 42, 0.04);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #08351f;
+  line-height: 1.45;
+}
+
+/* heading */
+.instructions h4{
+  margin: 0 0 0.35rem 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.2px;
+  color: #172f27;
+}
+
+/* normal paragraphs */
+.instructions p{
+  margin: 0.35rem 0;
+  font-size: 0.95rem;
+}
+
+/* the enrollment format — italicized and given a slightly different style for clarity */
+.instructions p.format{
+  font-style: italic;        /* <-- makes the format italic */
+  font-weight: 500;
+  background: rgba(26, 93, 37, 0.04);
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  white-space: pre-wrap;     /* preserves spacing if any */
+}
+
+/* warning line styling (keeps the emoji visible and noticeable) */
+.instructions p.warning{
+  color: #b91c1c;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+/* responsive tweak */
+@media (max-width: 420px){
+  .instructions{ padding: 0.75rem; border-radius: 8px; }
+  .instructions p, .instructions h4{ font-size: 0.92rem; }
+}
+
+.instructions p.example {
+  background: #f9fafb;
+  border: 1px dashed #94a3b8;
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
+  color: #374151;
+  margin-top: 0.4rem;
+}
+.dashboard {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 40px;
+  border-radius: 20px;
+  width: 360px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 1.8em;
+}
+
+h2 {
+  margin-top: 0;
+  font-weight: 500;
+}
+
+.account-card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.account-card h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.account-card p {
+  margin: 6px 0;
+}
+
+.button-container button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  background: #fff;
+  color: #05220f;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button-container button:hover {
+  background: #107b65;
+  color: white;
+}
+
+.logout {
+  background: #f44336;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout:hover {
+  background: #b71c1c;
+}

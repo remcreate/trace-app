@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard | TRACE</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBvtPqW95v4ZzpkGZiQFczg55jlGN-ZGNQ",
+      authDomain: "student-tracker-9c478.firebaseapp.com",
+      projectId: "student-tracker-9c478",
+      storageBucket: "student-tracker-9c478.firebasestorage.app",
+      messagingSenderId: "138881222420",
+      appId: "1:138881222420:web:6726b17d19661761c5e401",
+      measurementId: "G-SPE6T1XYMJ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.firestore();
+    window.auth = firebase.auth();
+  </script>
+</head>
+
+<body>
+  <div class="dashboard">
+    <h2 id="welcomeMessage">Welcome, Teacher!</h2>
+
+    <div id="accountDetails" class="account-card">
+      <h3>Your Account Details</h3>
+      <p><strong>Name:</strong> <span id="teacherName">Loading...</span></p>
+      <p><strong>Email:</strong> <span id="teacherEmail">Loading...</span></p>
+      <p><strong>Role:</strong> <span id="teacherRole">Loading...</span></p>
+      <p><strong>Grade Level:</strong> <span id="teacherGrade">Loading...</span></p>
+      <p><strong>Section:</strong> <span id="teacherSection">Loading...</span></p>
+    </div>
+
+<div class="button-container">
+      <button id="enrolBtn" class="dashboard-btn">
+        <i data-lucide="user-plus"></i> Enrol Learners
+      </button>
+      <button id="markBtn" class="dashboard-btn">
+        <i data-lucide="check-square"></i> Mark Attendance
+      </button>
+      <button id="summaryBtn" class="dashboard-btn">
+        <i data-lucide="bar-chart-3"></i> See Summary
+      </button>
+      <button id="logoutBtn" class="logout-btn">
+        <i data-lucide="log-out"></i> Logout
+      </button>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons(); // activate the icons
+  </script>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
