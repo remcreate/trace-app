@@ -61,7 +61,7 @@ loginForm.addEventListener('submit', async e => {
     if (userData.role === "admin") {
       window.location.href = 'qr.html';
     } else {
-      window.location.href = 'enrol_learners.html';
+      window.location.href = 'teacher_dashboard.html';
     }
 
   } catch (error) {
