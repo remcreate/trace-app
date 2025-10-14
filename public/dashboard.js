@@ -20,7 +20,8 @@ async function loadTeacherData() {
 
     const data = teacherDoc.data();
 
-    document.getElementById("welcomeMessage").textContent = `Welcome, ${data.name}!`;
+    // Update text content
+    document.getElementById("welcomeMessage").textContent = `Welcome, Teacher ${data.name}!`;
     document.getElementById("teacherName").textContent = data.name || "N/A";
     document.getElementById("teacherEmail").textContent = data.email || "N/A";
     document.getElementById("teacherRole").textContent = data.role || "N/A";
@@ -32,12 +33,20 @@ async function loadTeacherData() {
   }
 }
 
-// Navigate to another page
-function goTo(page) {
-  window.location.href = page;
-}
+// 🔹 Button navigation setup
+document.getElementById("enrolBtn").addEventListener("click", () => {
+  window.location.href = "enrol_learners.html";
+});
 
-// Logout
+document.getElementById("attendanceBtn").addEventListener("click", () => {
+  window.location.href = "mark_attendance.html";
+});
+
+document.getElementById("summaryBtn").addEventListener("click", () => {
+  window.location.href = "summary.html";
+});
+
+// 🔹 Logout
 document.getElementById("logoutBtn").addEventListener("click", async () => {
   try {
     await window.auth.signOut();
