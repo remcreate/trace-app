@@ -293,7 +293,7 @@ th {
 }
 
 .scanner-card {
-  width: 90%;                /* takes most of the screen on mobile */
+  width: 95%;                /* takes most of the screen on mobile */
   max-width: 480px;          /* limits size on larger screens */
   min-width: 280px;          /* prevents it from being too small */
   background: var(--card);
@@ -302,9 +302,10 @@ th {
   padding: clamp(16px, 2vw, 24px); /* dynamic padding based on screen */
   display: flex;
   flex-direction: column;
-  gap: var(--gap);
+  gap: clamp(12px, 2vw, 20px);     /* dynamic gap between elements */
   align-items: center;
   transition: all 0.3s ease; /* smooth resizing on window change */
+  margin: 2rem auto;  
 }
 
 /* Optional: slightly larger card on tablets/desktops */
@@ -515,4 +516,12 @@ body {
   #reader {
     max-width: 280px;
   }
+}
+#result {
+  margin-top: 20px;
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.5rem); /* scales between 1rem and 1.5rem */
+  font-weight: 600;
+  color: var(--accent-dark);
+  width: 100%;
 }
