@@ -52,6 +52,10 @@ async function loadLearners() {
           <div id="qr-${learner.id}"></div>
           <button onclick="downloadQR('${learner.id}','${learner.name}')">Download</button>
         </td>
+        <td>
+        <button onclick="editLearner('${learner.id}', '${learner.parentPhone}')">Edit</button>
+        <button onclick="deleteLearner('${learner.id}')">Delete</button>
+        </td>
       `;
       learnersTableBody.appendChild(tr);
 
